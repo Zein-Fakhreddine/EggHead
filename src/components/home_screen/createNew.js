@@ -80,7 +80,7 @@ export default class CreateNew extends Component {
       updates['/posts/' + newPostKey] = postData
       updates['/users/' + uid + '/posts/' + newPostKey] = postData
 
-      firebase.database().ref().update(updates).then(() => {
+      firebaseApp.database().ref().update(updates).then(() => {
         this.setState({ postStatus: 'Posted! Thank You.', postText: '' })
       }).catch(() => {
         this.setState({ postStatus: 'Something went wrong!!!' })

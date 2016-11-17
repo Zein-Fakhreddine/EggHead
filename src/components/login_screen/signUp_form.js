@@ -13,7 +13,8 @@ import {
   Platform,
   UIManager,
   StyleSheet,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Switch
 } from 'react-native'
 import { firebaseApp } from '../../firebase'
 import { getColor } from '../config'
@@ -35,7 +36,8 @@ export default class SignUpForm extends Component {
       signUpSuccess: false,
       displayName: '',
       email: '',
-      password: ''
+      password: '',
+      isTutor: false
     }
   }
 
@@ -87,7 +89,7 @@ export default class SignUpForm extends Component {
           placeholderTextColor='rgba(255,255,255,.6)'
           />
         </View>
-        <View style={styles.inputContainer}>
+        <View style={[styles.inputContainer, { marginBottom: 20 }]}>
           <TextInput
           style={styles.inputField}
           value={this.state.password}
@@ -98,6 +100,13 @@ export default class SignUpForm extends Component {
           placeholderTextColor='rgba(255,255,255,.6)'
           />
         </View>
+        <View style={styles.btnContainers}>
+          <Text style={styles.textBtnContainer}>{'Are you a tutor?'.toUpperCase()}</Text>
+          <Switch
+            onValueChange={(value) => this.setState({isTutor: value})}
+            style={{marginBottom: 10}}
+            value={this.state.isTutor} />
+          </View>
         <View style={styles.btnContainers}>
           <TouchableOpacity onPress={this._handleGoBack.bind(this)}>
             <View style={styles.submitBtnContainer}>
@@ -242,5 +251,15 @@ const styles = StyleSheet.create({
     fontFamily: 'Helvetica',
     fontSize: 12,
     color: getColor()
+  },
+
+  textBtnContainer: {
+    color: 'rgba(255,255,255,.9)',
+    width: 100,
+    height: 40,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
+
 })

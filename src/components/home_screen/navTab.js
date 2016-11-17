@@ -3,7 +3,8 @@ import {
   Text,
   View,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  Platform
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { getColor } from '../config'
@@ -39,13 +40,26 @@ export default class NavigationTab extends Component {
 
 }
 
-const styles = StyleSheet.create({
-  tabs: {
+var tabStyles = {}
+if (Platform.OS === "ios") {
+  tabStyles = {
+    height: 70, 
+    paddingTop: 20,
+    flexDirection: 'row',
+    backgroundColor: getColor('googleBlue500'),
+    elevation: 5
+  }
+} else {
+  tabStyles = {
     height: 50,
     flexDirection: 'row',
     backgroundColor: getColor('googleBlue500'),
     elevation: 5
-  },
+  }
+}
+
+const styles = StyleSheet.create({
+  tabs: tabStyles,
   titleContainer: {
     flex: 3,
     justifyContent: 'center',

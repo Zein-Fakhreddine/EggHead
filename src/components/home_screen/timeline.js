@@ -72,9 +72,9 @@ class Timeline extends Component {
         <RefreshControl
           refreshing={this.state.isRefreshing}
           onRefresh={this._onRefresh.bind(this)}
-          tintColor="#ff0000"
+          tintColor="#c1bfbf"
           title="Loading..."
-          titleColor="#00ff00"
+          titleColor="#333333"
           colors={[getColor()]}
           progressBackgroundColor={getColor('#ffffff')}
         />
